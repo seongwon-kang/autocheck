@@ -8,6 +8,8 @@ import static com.codeborne.selenide.Selenide.actions;
 
 public class LoginProcess {
 
+    private LoginType logintype;
+
     public static void proceed() {
         GNB gnb = new GNB();
 
@@ -23,6 +25,12 @@ public class LoginProcess {
     }
 
     public LoginProcess WillSetLoginTypeTo(LoginType logintype) {
+        this.logintype = logintype;
+
         return this;
+    }
+
+    public void proceedLogin() {
+        if (logintype.equals(LoginType.NON_MEMBER)) return;
     }
 }

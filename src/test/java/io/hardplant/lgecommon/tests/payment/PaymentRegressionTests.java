@@ -21,6 +21,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static org.testng.Assert.assertEquals;
@@ -37,7 +38,7 @@ public class PaymentRegressionTests {
     public void setUp() {
         // Fix the issue https://github.com/SeleniumHQ/selenium/issues/11750
         Configuration.browserCapabilities = new ChromeOptions().addArguments("--remote-allow-origins=*");
-        open("https://www.lge.co.kr/");
+        Configuration.baseUrl = "https://www.lge.co.kr/";
     }
 
 
@@ -103,6 +104,10 @@ public class PaymentRegressionTests {
 
         BillProcess billProcess = new BillProcess()
                 .willPayWith(paymentType);
+
+        loginProcess.proceedLogin();
+
+        productToCartProcess.proceedProductToCart();
     }
 
     @Test
@@ -133,6 +138,8 @@ public class PaymentRegressionTests {
         ProductType productType = ProductType.Normal;
         CartEnterType cartEnterType = CartEnterType.PDPToCart;
         PaymentType paymentType = PaymentType.CreditCard;
+
+        open(baseUrl);
 
         LoginProcess loginProcess = new LoginProcess()
                 .WillSetLoginTypeTo(logintype);

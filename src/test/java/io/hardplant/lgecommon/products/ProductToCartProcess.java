@@ -14,4 +14,7 @@ public class ProductToCartProcess {
     public ProductToCartProcess willLoginDuringOrderWithCredentialOf(Object o) {
         return this;
     }
+
+    public void proceedProductToCart() {
+    }
 }
