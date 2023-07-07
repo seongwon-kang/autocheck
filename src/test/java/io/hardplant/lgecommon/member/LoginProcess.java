@@ -1,7 +1,5 @@
 package io.hardplant.lgecommon.member;
 
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.commands.Hover;
 import io.hardplant.lgecommon.display.GNB;
 
 import javax.swing.*;
@@ -22,5 +20,9 @@ public class LoginProcess {
         String input = JOptionPane.showInputDialog(null, "Enter password:");
 
         return input;
+    }
+
+    public LoginProcess WillSetLoginTypeTo(LoginType logintype) {
+        return this;
     }
 }
